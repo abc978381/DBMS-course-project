@@ -72,8 +72,9 @@ Run the orchestrator:
 
 ```Bash
 python main.py
-The console will output the segmentation details, run the extraction experiments, print a Pandas DataFrame comparing the precision/recall/F1 metrics, and finally upload the hybrid corroborated graph to Neo4j. You can view the graph by opening your Neo4j Browser.
 ```
+The console will output the segmentation details, run the extraction experiments, print a Pandas DataFrame comparing the precision/recall/F1 metrics, and finally upload the hybrid corroborated graph to Neo4j. You can view the graph by opening your Neo4j Browser.
+
 
 ## Evaluation Strategy
 This pipeline moves away from brittle string-matching and arbitrary confidence thresholds. Fused triples are evaluated using a Harmonic Mean:
