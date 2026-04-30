@@ -2,7 +2,7 @@
 
 An end-to-end NLP pipeline that extracts Open Information Extraction (OpenIE) triples from unstructured text, mathematically fuses cross-architecture results, evaluates semantic accuracy, and populates a Neo4j Knowledge Graph.
 
-## 🚀 Features
+## Features
 
 * **Advanced Preprocessing:** Uses `fastcoref` for neural coreference resolution, including custom logic for possessive pronoun reconstruction.
 * **Hybrid Extraction Engine:** 
@@ -12,7 +12,7 @@ An end-to-end NLP pipeline that extracts Open Information Extraction (OpenIE) tr
 * **Intelligent Fusion:** Mathematically merges overlapping triples using a Harmonic Mean of **Lexical Fidelity** (preventing hallucinations) and **Semantic Cosine Similarity** (`all-MiniLM-L6-v2`), completely eliminating arbitrary confidence heuristics.
 * **Graph Database Upsertion:** Idempotent Cypher generation with schema uniqueness constraints loaded directly into a local Neo4j instance.
 
-## 📂 Project Structure
+## Project Structure
 ```text
 ├── coref_resolver.py     # Neural pronoun resolution
 ├── evaluate.py           # Harmonic F1 Semantic Evaluation
@@ -27,8 +27,9 @@ An end-to-end NLP pipeline that extracts Open Information Extraction (OpenIE) tr
 ├── ground_truth.json     # Evaluation benchmark data (User provided)
 ├── requirements.txt      # Pinned dependency map
 └── .env                  # API keys and DB credentials
+```
 
-🛠️ Installation & Setup
+## Installation & Setup
 1. Clone the repository and navigate to the directory
 
 Bash
@@ -56,7 +57,7 @@ NEO4J_PASSWORD=your_database_password
 5. Start Neo4j
 Ensure your local Neo4j desktop or Docker container is running and matches the credentials in your .env file.
 
-🧠 Usage
+## Usage
 Paste your unstructured text into input.txt.
 
 (Optional) Update ground_truth.json with your expected triples to benchmark the F1 score.
@@ -67,11 +68,11 @@ Bash
 python main.py
 The console will output the segmentation details, run the extraction experiments, print a Pandas DataFrame comparing the precision/recall/F1 metrics, and finally upload the hybrid corroborated graph to Neo4j. You can view the graph by opening your Neo4j Browser.
 
-📊 Evaluation Strategy
+## Evaluation Strategy
 This pipeline moves away from brittle string-matching and arbitrary confidence thresholds. Fused triples are evaluated using a Harmonic Mean:
 
-Lexical Overlap: Measures the strict intersection of informational root lemmas between the extracted tuple and the source text (acting as a "Hallucination Guillotine").
+- Lexical Overlap: Measures the strict intersection of informational root lemmas between the extracted tuple and the source text (acting as a "Hallucination Guillotine").
 
-Semantic Similarity: Computes the cosine similarity of dense vector embeddings to validate contextual meaning.
+- Semantic Similarity: Computes the cosine similarity of dense vector embeddings to validate contextual meaning.
 
 Triples must possess both exactness and meaning to be highly scored and uploaded to the graph.
