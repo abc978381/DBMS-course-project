@@ -32,28 +32,34 @@ An end-to-end NLP pipeline that extracts Open Information Extraction (OpenIE) tr
 ## Installation & Setup
 1. Clone the repository and navigate to the directory
 
-Bash
+```Bash
 git clone [https://github.com/yourusername/knowledge-graph-pipeline.git](https://github.com/yourusername/knowledge-graph-pipeline.git)
 cd knowledge-graph-pipeline
+```
+
 2. Create a Virtual Environment
 
-Bash
+```Bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 3. Install Dependencies
 
-Bash
+```Bash
 pip install -r requirements.txt
 (Note: spaCy's English model en_core_web_sm will automatically download on the first run via utils.py if not detected).
+```
 
 4. Environment Variables
 Create a .env file in the root directory with the following keys:
 
-Code snippet
+```text
 GROQ_API_KEY=your_groq_api_key_here
 NEO4J_URI=bolt://localhost:7687
 NEO4J_USER=neo4j
 NEO4J_PASSWORD=your_database_password
+```
+
 5. Start Neo4j
 Ensure your local Neo4j desktop or Docker container is running and matches the credentials in your .env file.
 
@@ -64,9 +70,10 @@ Paste your unstructured text into input.txt.
 
 Run the orchestrator:
 
-Bash
+```Bash
 python main.py
 The console will output the segmentation details, run the extraction experiments, print a Pandas DataFrame comparing the precision/recall/F1 metrics, and finally upload the hybrid corroborated graph to Neo4j. You can view the graph by opening your Neo4j Browser.
+```
 
 ## Evaluation Strategy
 This pipeline moves away from brittle string-matching and arbitrary confidence thresholds. Fused triples are evaluated using a Harmonic Mean:
