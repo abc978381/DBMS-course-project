@@ -1,0 +1,26 @@
+# --- Environments ---
+.env
+.venv
+env/
+venv/
+ENV/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# --- Project Outputs ---
+# We ignore the generated graph outputs
+final_triples.json
+
+# --- OS & IDEs ---
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- ML Models ---
+.huggingface/

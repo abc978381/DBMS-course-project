@@ -1,0 +1,17 @@
+# --- NLP & Core ML ---
+# Pinned to ensure compatibility with sentence-transformers and Hugging Face
+torch>=2.2.0
+spacy>=3.7.0
+transformers>=4.35.0,<4.40.0
+sentence-transformers>=2.5.0
+
+# --- APIs & Database ---
+groq>=0.4.0
+neo4j>=5.17.0
+
+# --- Data Processing & Utilities ---
+numpy>=1.26.0,<2.0.0  # Kept under 2.0 to avoid breaking older pre-compiled ML binaries
+pandas>=2.2.0
+python-dotenv>=1.0.0
+
+fastcoref>=2.1.0
